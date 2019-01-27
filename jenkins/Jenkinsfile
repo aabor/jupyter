@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            environment { 
+                USER=credentials('jenkins-current-user')
+                DOCKER_CREDS=credentials('jenkins-docker-credentials')
+            }            
+            steps {
+                echo 'Building..'
+                sh '''
+                    export GIT_VERSION=$(git describe --tags | sed s/v//)
+                    docker-compose build
+                    docker tag $USER/aabor/nbdatascience:latest $USER/aabor/nbdatascience:$GIT_VERSION
+                    docker system prune -f
+                '''
+                sh '''
+                    echo "login to docker"
+                    docker login -u $DOCKER_CREDS_USR  -p $DOCKER_CREDS_PSW
+                    echo "Pushing nbdatascience:latest to docker hub"
+                    docker push aabor/nbdatascience:latest
+
+                    echo "starting docker containers"
+                    export GIT_VERSION=$(git describe --tags | sed s/v//)
+                    echo $GIT_VERSION
+                    docker-compose up -d --remove-orphans
+                '''
+                mail    body: 'containers selenium-hub, chrome, nbdatascience started',
+                        from: 'aaborochkin@gmail.com',
+                        subject: 'jupyter successfully rolled out',
+                        to: 'aaborochkin@gmail.com'  
+            }
+            post {
+                always{
+                    cleanWs()
+                    sh '''
+                        pwd
+                        ls
+                        echo "Finishing.."
+                    '''
+                }
+            }
+        }
+    }
+}

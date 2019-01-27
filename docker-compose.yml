@@ -1,0 +1,54 @@
+#https://github.com/SeleniumHQ/docker-selenium
+version: '3'
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-dubnium
+    environment:
+      - GRID_MAX_SESSION=15
+      - GRID_TIMEOUT=180000
+      - GRID_BROWSER_TIMEOUT=180000      
+    networks: 
+      - selenium-hub
+  chrome:
+    image: selenium/node-chrome:3.141.59-dubnium
+    shm_size: 512MB
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=6
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - DBUS_SESSION_BUS_ADDRESS=/dev/null
+    networks: 
+      - selenium-hub
+  nbdatascience: 
+    image: aabor/nbdatascience
+    build: nbdatascience/.
+    volumes:
+      - /home/$USER/R:/home/jovyan/work/R
+      - /home/$USER/Documents/Trading/fh_data-dev:/home/jovyan/work/R/fh/data
+      - /home/$USER/Dropbox/mt4/data-dev:/home/jovyan/work/R/fh/data/mt4
+      - /home/$USER/Documents/Trading/news-arch:/home/jovyan/work/R/fh/data/news-arch
+      - /home/$USER/docker:/home/jovyan/work/docker
+      - /home/$USER/py:/home/jovyan/work/py
+      - /home/$USER/.jupyter:/home/jovyan/.jupyter
+      - /home/$USER/.ssh:/home/jovyan/.ssh/  
+      - /home/$USER/.secrets:/home/jovyan/.secrets/  
+      - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
+      - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
+    ports:
+      - 10000:8888
+    environment:
+      - TZ="Europe/Kiev"
+      - GIT_VERSION=$GIT_VERSION
+    restart: always
+    depends_on:
+      - chrome
+    networks: 
+      - selenium-hub
+networks:
+  selenium-hub:
+    external: true
