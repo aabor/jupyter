@@ -11,7 +11,7 @@ pipeline {
                 sh '''
                     export GIT_VERSION=$(git describe --tags | sed s/v//)
                     docker-compose build
-                    docker tag $USER/aabor/nbdatascience:latest $USER/aabor/nbdatascience:$GIT_VERSION
+                    docker tag $USER/nbdatascience:latest $USER/nbdatascience:$GIT_VERSION
                     docker system prune -f
                 '''
                 sh '''
