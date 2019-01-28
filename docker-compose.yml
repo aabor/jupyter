@@ -49,9 +49,9 @@ services:
       - chrome
     networks: 
       - selenium-hub
-      - aabor-front-end
+      - front-end
 networks:
   selenium-hub:
     external: true
-  aabor-front-end:
+  front-end:
     external: true
