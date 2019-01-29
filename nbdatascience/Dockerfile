@@ -37,7 +37,7 @@ RUN jupyter serverextension enable --py jupyterlab_git
 RUN pip install lxml humanfriendly Flask Flask-Session
 RUN pip install import-ipynb
 RUN pip install pause
-RUN pip install pytest
+RUN pip install pytest xmlrunner
 
 
     
