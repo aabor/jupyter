@@ -44,6 +44,7 @@ services:
     environment:
       - TZ="Europe/Kiev"
       - GIT_VERSION=$GIT_VERSION
+      - WERKZEUG_DEBUG_PIN=off
     restart: always
     depends_on:
       - chrome
