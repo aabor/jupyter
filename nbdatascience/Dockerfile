@@ -34,10 +34,9 @@ RUN jupyter labextension install -y @jupyterlab/toc
 RUN jupyter labextension install -y @jupyterlab/git
 RUN pip install jupyterlab-git 
 RUN jupyter serverextension enable --py jupyterlab_git
-RUN pip install lxml humanfriendly Flask Flask-Session
-RUN pip install import-ipynb
-RUN pip install pause
-RUN pip install pytest ipytest xmlrunner 
+RUN pip install lxml xmlrunner Flask
+RUN pip install pause humanfriendly
+RUN pip install pytest ipytest  
 
 
     

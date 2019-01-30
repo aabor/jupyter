@@ -17,12 +17,11 @@ pipeline {
                 sh '''
                     echo "login to docker"
                     docker login -u $DOCKER_CREDS_USR  -p $DOCKER_CREDS_PSW
-                    echo "Pushing nbdatascience:latest to docker hub"
-                    docker push aabor/nbdatascience:latest
-
-                    echo "starting docker containers"
                     export GIT_VERSION=$(git describe --tags | sed s/v//)
                     echo $GIT_VERSION
+                    echo "Pushing nbdatascience:$GIT_VERSION to docker hub"
+                    docker push aabor/nbdatascience:$GIT_VERSION
+                    echo "starting docker containers"
                     docker-compose up -d --remove-orphans
                 '''
                 mail    body: 'containers selenium-hub, chrome, nbdatascience started',
