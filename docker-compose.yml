@@ -29,9 +29,8 @@ services:
     build: nbdatascience/.
     volumes:
       - /home/$USER/R:/home/jovyan/work/R
-      - /home/$USER/Documents/Trading/fh_data-dev:/home/jovyan/work/R/fh/data
-      - /home/$USER/Dropbox/mt4/data-dev:/home/jovyan/work/R/fh/data/mt4
-      - /home/$USER/Documents/Trading/news-arch:/home/jovyan/work/R/fh/data/news-arch
+      - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
+      - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
       - /home/$USER/docker:/home/jovyan/work/docker
       - /home/$USER/py:/home/jovyan/work/py
       - /home/$USER/.jupyter:/home/jovyan/.jupyter
@@ -43,7 +42,6 @@ services:
       - 10000:8888
     environment:
       - TZ="Europe/Kiev"
-      - GIT_VERSION=$GIT_VERSION
       - WERKZEUG_DEBUG_PIN=off
     restart: always
     depends_on:
