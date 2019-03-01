@@ -22,6 +22,8 @@ services:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
       - DBUS_SESSION_BUS_ADDRESS=/dev/null
+    volumes:
+      - /home/$USER/Documents/Library/wos/new:/home/seluser/Downloads
     networks: 
       - selenium-hub
   nbdatascience: 
