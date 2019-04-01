@@ -22,6 +22,12 @@ RUN apt-get update && apt-get install -y \
   gnupg2 \
   && apt-get clean
 
+RUN apt-get update && apt-get install -y \
+  gcc \
+  binutils \
+  cmake \
+  && apt-get clean
+
 USER jovyan
 
 RUN conda install -y nodejs 
@@ -37,6 +43,5 @@ RUN jupyter serverextension enable --py jupyterlab_git
 RUN pip install lxml xmlrunner Flask
 RUN pip install pause humanfriendly
 RUN pip install pytest ipytest  
+RUN pip install xlearn
 
-
-    
