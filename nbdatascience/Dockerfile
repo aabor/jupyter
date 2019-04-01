@@ -1,6 +1,6 @@
 # aabor/nbdatascience
 # configured for automatic build
-FROM jupyter/datascience-notebook:87210526f381
+FROM jupyter/datascience-notebook:be289da10d60
 
 LABEL maintainer="A. Borochkin"
 
