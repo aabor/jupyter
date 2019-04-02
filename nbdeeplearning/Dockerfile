@@ -45,3 +45,26 @@ RUN pip install pause humanfriendly
 RUN pip install pytest ipytest  
 RUN pip install kaggle
 RUN pip install xlearn
+
+USER root
+
+# R pre-requisites
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    gfortran \
+    gcc && \
+rm -rf /var/lib/apt/lists/*
+
+USER $NB_UID
+# R packages including IRKernel which gets installed globally.
+RUN conda install --quiet --yes \
+    'rpy2=2.9*' \
+    'r-base=3.5.1' \
+    'r-irkernel=0.8*' \
+    'r-plyr=1.8*' \
+    'r-devtools=1.13*' \
+    'r-tidyverse=1.2*' && \
+    conda clean -tipsy && \
+    fix-permissions $CONDA_DIR && \
+fix-permissions /home/$NB_USER
