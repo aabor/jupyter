@@ -38,6 +38,7 @@ services:
       - /home/$USER/py:/home/jovyan/work/py
       - /home/$USER/data:/home/jovyan/data
       - /home/$USER/.jupyter:/home/jovyan/.jupyter
+      - /home/$USER/.kaggle:/home/jovyan/.kaggle
       - /home/$USER/.ssh:/home/jovyan/.ssh/  
       - /home/$USER/.secrets:/home/jovyan/.secrets/  
       - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
