@@ -72,7 +72,7 @@ services:
       - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
       - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
     ports:
-      - 10000:8888
+      - 10001:8888
     environment:
       - TZ="EEST"
       - WERKZEUG_DEBUG_PIN=off
