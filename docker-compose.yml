@@ -36,6 +36,7 @@ services:
       - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
       - /home/$USER/docker:/home/jovyan/work/docker
       - /home/$USER/py:/home/jovyan/work/py
+      - /home/$USER/data:/home/jovyan/data
       - /home/$USER/.jupyter:/home/jovyan/.jupyter
       - /home/$USER/.ssh:/home/jovyan/.ssh/  
       - /home/$USER/.secrets:/home/jovyan/.secrets/  
