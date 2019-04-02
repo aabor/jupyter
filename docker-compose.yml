@@ -46,7 +46,35 @@ services:
     ports:
       - 10000:8888
     environment:
-      - TZ="Europe/Kiev"
+      - TZ="EEST"
+      - WERKZEUG_DEBUG_PIN=off
+    restart: always
+    depends_on:
+      - chrome
+    networks: 
+      - selenium-hub
+      - front-end
+  nbdeeplearning: 
+    image: aabor/nbdeeplearning
+    build: nbdeeplearning/.
+    volumes:
+      - /home/$USER/R:/home/jovyan/work/R
+      - /home/$USER/Documents:/home/jovyan/Documents
+      - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
+      - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
+      - /home/$USER/docker:/home/jovyan/work/docker
+      - /home/$USER/py:/home/jovyan/work/py
+      - /home/$USER/data:/home/jovyan/data
+      - /home/$USER/.jupyter:/home/jovyan/.jupyter
+      - /home/$USER/.kaggle:/home/jovyan/.kaggle
+      - /home/$USER/.ssh:/home/jovyan/.ssh/  
+      - /home/$USER/.secrets:/home/jovyan/.secrets/  
+      - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
+      - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
+    ports:
+      - 10000:8888
+    environment:
+      - TZ="EEST"
       - WERKZEUG_DEBUG_PIN=off
     restart: always
     depends_on:
