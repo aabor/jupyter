@@ -44,4 +44,4 @@ RUN pip install lxml xmlrunner Flask
 RUN pip install pause humanfriendly
 RUN pip install pytest ipytest  
 RUN pip install xlearn
-
+RUN pip install kaggle
