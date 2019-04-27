@@ -46,3 +46,5 @@ RUN pip install pytest ipytest
 RUN pip install xlearn
 RUN pip install kaggle
 RUN pip install dataset
+#RUN pip install psycopg2
+#RUN pip install pygresql
