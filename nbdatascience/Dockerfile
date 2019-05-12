@@ -46,5 +46,8 @@ RUN pip install pytest ipytest
 RUN pip install xlearn
 RUN pip install kaggle
 RUN pip install dataset
+RUN pip install openpyxl XlsxWriter
+RUN pip install fuzzywuzzy
+RUN pip install nltk stopwordsiso
 #RUN pip install psycopg2
 #RUN pip install pygresql
