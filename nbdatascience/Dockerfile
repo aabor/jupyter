@@ -49,9 +49,6 @@ RUN pip install dataset
 RUN pip install openpyxl XlsxWriter
 RUN pip install fuzzywuzzy
 RUN pip install nltk stopwordsiso
-<<<<<<< HEAD
-=======
 
->>>>>>> excel integration and nlp packages added
 #RUN pip install psycopg2
 #RUN pip install pygresql
