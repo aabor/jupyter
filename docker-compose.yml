@@ -31,6 +31,7 @@ services:
     build: nbdatascience/.
     volumes:
       - /home/$USER/R:/home/jovyan/work/R
+      - /home/$USER/Dropbox/cheatsheets:/home/jovyan/work/cheatsheets
       - /home/$USER/Documents:/home/jovyan/Documents
       - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
       - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
@@ -59,6 +60,7 @@ services:
   #   build: nbdeeplearning/.
   #   volumes:
   #     - /home/$USER/R:/home/jovyan/work/R
+  #     - /home/$USER/Dropbox/cheatsheets:/home/jovyan/work/cheatsheets
   #     - /home/$USER/Documents:/home/jovyan/Documents
   #     - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
   #     - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
