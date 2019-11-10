@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
 
 USER jovyan
 
-RUN conda install -y nodejs 
+RUN jupyter lab build
 
 RUN conda install -c clinicalgraphics selenium-chromedriver
 RUN conda install -c conda-forge selenium tabulate
