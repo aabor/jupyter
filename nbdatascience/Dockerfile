@@ -13,6 +13,8 @@ RUN  apt-get update && apt-get install -y \
 
 USER jovyan
 
+RUN pip install boto3[crt] tensorflow tensorflow-datasets kaggle
+
 # RUN jupyter lab build
 
 # RUN jupyter labextension install -y @jupyterlab/toc

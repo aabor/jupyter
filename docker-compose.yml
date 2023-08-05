@@ -2,23 +2,24 @@
 version: '3'
 services:
   nbdatascience: 
-    image: aabor/nbdatascience
+    image: aabor/nbdatascience:1.0
     build: nbdatascience/.
     volumes:
-      - /Users/$USER/MEGAsync/mt5:/home/jovyan/mt5
-      - /home/$USER/.jupyter:/home/jovyan/.jupyter
-      - /home/$USER/.ipython:/home/jovyan/.ipython
-      - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
-      - /home/$USER/.aws:/home/jovyan/.aws
-      - /home/$USER/.ssh:/home/jovyan/.ssh
-      - /home/$USER/.gnupg:/home/jovyan/.gnupg
-      - /home/$USER/.password_store:/home/jovyan/.password_store
-      - /home/$USER/.matplotlib:/home/jovyan/.matplotlib
-      - /home/$USER/.keras:/home/jovyan/.keras
-      - /home/$USER/.kaggle:/home/jovyan/.kaggle
-      - /home/$USER/.ssh:/home/jovyan/.ssh/  
+      - /Users/$USER/projects:/home/jovyan/work
+      - /Users/$USER/MEGAsync/mt5:/home/jovyan/work/mt5
+      - /Users/$USER/.jupyter:/home/jovyan/.jupyter
+      - /Users/$USER/.ipython:/home/jovyan/.ipython
+      - /Users/$USER/.gitconfig:/home/jovyan/.gitconfig
+      - /Users/$USER/.gitignore_global:/home/jovyan/.gitignore_global
+      - /Users/$USER/.aws:/home/jovyan/.aws
+      - /Users/$USER/.ssh:/home/jovyan/.ssh
+      - /Users/$USER/.gnupg:/home/jovyan/.gnupg
+      - /Users/$USER/.password-store:/home/jovyan/.password-store
+      - /Users/$USER/.matplotlib:/home/jovyan/.matplotlib
+      - /Users/$USER/.keras:/home/jovyan/.keras
+      - /Users/$USER/.kaggle:/home/jovyan/.kaggle
     ports:
-      - 10000:8888
+      - 8888:8888
     environment:
       - TZ="PDT"
     restart: always
