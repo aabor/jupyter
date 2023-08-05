@@ -1,91 +1,25 @@
 #https://github.com/SeleniumHQ/docker-selenium
 version: '3'
 services:
-  selenium-hub:
-    image: selenium/hub:3.141.59-dubnium
-    environment:
-      - GRID_MAX_SESSION=15
-      - GRID_TIMEOUT=180000
-      - GRID_BROWSER_TIMEOUT=180000      
-    networks: 
-      - selenium-hub
-  chrome:
-    image: selenium/node-chrome:3.141.59-dubnium
-    shm_size: 512MB
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - NODE_MAX_INSTANCES=5
-      - NODE_MAX_SESSION=6
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-      - DBUS_SESSION_BUS_ADDRESS=/dev/null
-    volumes:
-      - /home/$USER/Documents/Library/wos/new:/home/seluser/Downloads
-    networks: 
-      - selenium-hub
   nbdatascience: 
     image: aabor/nbdatascience
     build: nbdatascience/.
     volumes:
-      - /home/$USER/R:/home/jovyan/work/R
-      - /home/$USER/Dropbox/cheatsheets:/home/jovyan/work/cheatsheets
-      - /home/$USER/Documents:/home/jovyan/Documents
-      - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
-      - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
-      - /home/$USER/docker:/home/jovyan/work/docker
-      - /home/$USER/py:/home/jovyan/work/py
-      - /home/$USER/data:/home/jovyan/data
+      - /Users/$USER/MEGAsync/mt5:/home/jovyan/mt5
       - /home/$USER/.jupyter:/home/jovyan/.jupyter
+      - /home/$USER/.ipython:/home/jovyan/.ipython
+      - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
+      - /home/$USER/.aws:/home/jovyan/.aws
+      - /home/$USER/.ssh:/home/jovyan/.ssh
+      - /home/$USER/.gnupg:/home/jovyan/.gnupg
+      - /home/$USER/.password_store:/home/jovyan/.password_store
+      - /home/$USER/.matplotlib:/home/jovyan/.matplotlib
+      - /home/$USER/.keras:/home/jovyan/.keras
       - /home/$USER/.kaggle:/home/jovyan/.kaggle
       - /home/$USER/.ssh:/home/jovyan/.ssh/  
-      - /home/$USER/.secrets:/home/jovyan/.secrets/  
-      - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
-      - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
     ports:
       - 10000:8888
     environment:
-      - TZ="EEST"
-      - WERKZEUG_DEBUG_PIN=off
+      - TZ="PDT"
     restart: always
-    depends_on:
-      - chrome
-    networks: 
-      - selenium-hub
-      - front-end
-  # nbdeeplearning: 
-  #   image: aabor/nbdeeplearning
-  #   build: nbdeeplearning/.
-  #   volumes:
-  #     - /home/$USER/R:/home/jovyan/work/R
-  #     - /home/$USER/Dropbox/cheatsheets:/home/jovyan/work/cheatsheets
-  #     - /home/$USER/Documents:/home/jovyan/Documents
-  #     - /home/$USER/Documents/Trading/fh:/home/jovyan/work/R/fh/data
-  #     - /home/$USER/Documents/Trading/news-csv-arch:/home/jovyan/work/R/fh/data/news-csv-arch
-  #     - /home/$USER/docker:/home/jovyan/work/docker
-  #     - /home/$USER/py:/home/jovyan/work/py
-  #     - /home/$USER/data:/home/jovyan/data
-  #     - /home/$USER/.jupyter:/home/jovyan/.jupyter
-  #     - /home/$USER/.kaggle:/home/jovyan/.kaggle
-  #     - /home/$USER/.ssh:/home/jovyan/.ssh/  
-  #     - /home/$USER/.secrets:/home/jovyan/.secrets/  
-  #     - /home/$USER/.httr-oauth:/home/jovyan/.httr-oauth
-  #     - /home/$USER/.gitconfig:/home/jovyan/.gitconfig
-  #   ports:
-  #     - 10001:8888
-  #   environment:
-  #     - TZ="EEST"
-  #     - WERKZEUG_DEBUG_PIN=off
-  #   restart: always
-  #   depends_on:
-  #     - chrome
-  #   networks: 
-  #     - selenium-hub
-  #     - front-end
-networks:
-  selenium-hub:
-    external: true
-  front-end:
-    external: true
+
