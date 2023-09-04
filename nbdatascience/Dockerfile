@@ -13,7 +13,9 @@ RUN  apt-get update && apt-get install -y \
 
 USER jovyan
 
+RUN python -m pip install --upgrade pip 
 RUN pip install boto3[crt] tensorflow tensorflow-datasets kaggle
+RUN pip install mplfinance omegaconf humanfriendly dataclasses_json
 
 # RUN jupyter lab build
 

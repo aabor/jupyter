@@ -6,7 +6,8 @@ services:
     build: nbdatascience/.
     volumes:
       - /Users/$USER/projects:/home/jovyan/work
-      - /Users/$USER/MEGAsync/mt5:/home/jovyan/work/mt5
+      - /Users/$USER/mt5:/home/jovyan/work/mt5
+      - /Users/aabor/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/home/jovyan/work/mt5/updates
       - /Users/$USER/.jupyter:/home/jovyan/.jupyter
       - /Users/$USER/.ipython:/home/jovyan/.ipython
       - /Users/$USER/.gitconfig:/home/jovyan/.gitconfig
