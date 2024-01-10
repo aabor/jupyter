@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+set -u
+
+echo " - - - Create $CHATGPT_CONFIG_DATABASE database"
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+  CREATE DATABASE "$CHATGPT_CONFIG_DATABASE";
+EOSQL
+
+echo " - - - Create $BUS_PORTLAND_CONFIG_DATABASE database"
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+  CREATE DATABASE "$BUS_PORTLAND_CONFIG_DATABASE";
+EOSQL
