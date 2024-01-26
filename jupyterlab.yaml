@@ -1,17 +1,21 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Part 1 - Build a JupyterLab stack with CloudFormation
+Description: Build a JupyterLab stack with CloudFormation
 
 Resources:
   JupyterLabInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-02f7fa3c92b47db0a #ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
+      ImageId: ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
       InstanceType: t3.small
       KeyName: aabor
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
           Ebs:
             VolumeSize: 32
+        # - DeviceName: /dev/sda2
+        #   Ebs:
+        #     DeleteOnTermination: false
+        #     VolumeSize: 24
       SecurityGroupIds:
         - !Ref JupyterLabSecurityGroup
 

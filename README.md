@@ -75,7 +75,19 @@ aws cloudformation update-stack \
 mkdir -p ~/.jupyter ~/.cache ~/.streamlit ~/.ipython ~/.gnupg ~/.ssh ~/.password-store ~/.matplotlib ~/.kaggle ~/.netrc ~/.db/sqlite3 ~/.db/postgres
 
 
-rsync -auxv prototypes ubuntu@52.12.205.213:~/work/rag/
+rsync -auxv ~/data_lake ubuntu@52.38.23.157:~/
+rsync -auxv ~/.jupyter ubuntu@52.38.23.157:~/
+rsync -auxv ~/.cache ubuntu@52.38.23.157:~/
+rsync -auxv ~/.vector_store ubuntu@52.38.23.157:~/
+rsync -auxv ~/.db ubuntu@52.38.23.157:~/
+rsync -auxv ~/.ipython ubuntu@52.38.23.157:~/
+rsync -auxv ~/.gitconfig ubuntu@52.38.23.157:~/
+rsync -auxv ~/.gitignore_global ubuntu@52.38.23.157:~/
+rsync -auxv ~/.gnupg ubuntu@52.38.23.157:~/
+rsync -auxv ~/.password-store ubuntu@52.38.23.157:~/
+rsync -auxv ~/.matplotlib ubuntu@52.38.23.157:~/
 
+git clone git@bitbucket.org:aabor/cheatsheets.git
+git clone git@github.com:aabor/jupyter.git
 ```
 

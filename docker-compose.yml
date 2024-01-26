@@ -6,12 +6,12 @@ services:
     build: nbdatascience/.
     volumes:
       - $HOME/projects:/home/jovyan/work
+      - $HOME/data_lake:/home/jovyan/data_lake
       - $HOME/mt5:/mnt/efs/mt5
       - $HOME/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/mnt/efs/mt5/updates
       - $HOME/.jupyter:/home/jovyan/.jupyter
       - $HOME/.cache:/home/jovyan/.cache
       - $HOME/.vector_store:/home/jovyan/.vector_store
-      - $HOME/.data_lake:/home/jovyan/.data_lake
       - $HOME/.db/sqlite3:/db/sqlite3
       - $HOME/.db/postgres:/db/
       - $HOME/.streamlit:/home/jovyan/.streamlit
