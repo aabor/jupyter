@@ -10,6 +10,10 @@ services:
       - $HOME/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/mnt/efs/mt5/updates
       - $HOME/.jupyter:/home/jovyan/.jupyter
       - $HOME/.cache:/home/jovyan/.cache
+      - $HOME/.vector_store:/home/jovyan/.vector_store
+      - $HOME/.data_lake:/home/jovyan/.data_lake
+      - $HOME/.db/sqlite3:/db/sqlite3
+      - $HOME/.db/postgres:/db/
       - $HOME/.streamlit:/home/jovyan/.streamlit
       - $HOME/.ipython:/home/jovyan/.ipython
       - $HOME/.gitconfig:/home/jovyan/.gitconfig
@@ -22,8 +26,6 @@ services:
       - $HOME/.keras:/home/jovyan/.keras
       - $HOME/.kaggle:/home/jovyan/.kaggle
       - $HOME/.netrc:/home/jovyan/.netrc
-      - $HOME/.db/sqlite3:/db/sqlite3
-      - $HOME/.db/postgres:/db/
     ports:
       - 8888:8888
       - 8501:8501
