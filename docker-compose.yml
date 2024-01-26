@@ -5,32 +5,39 @@ services:
     image: aabor/nbdatascience:2.0
     build: nbdatascience/.
     volumes:
-      - /Users/$USER/projects:/home/jovyan/work
-      - /Users/$USER/mt5:/mnt/efs/mt5
-      - /Users/aabor/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/mnt/efs/mt5/updates
-      - /Users/$USER/.jupyter:/home/jovyan/.jupyter
-      - /Users/$USER/.ipython:/home/jovyan/.ipython
-      - /Users/$USER/.gitconfig:/home/jovyan/.gitconfig
-      - /Users/$USER/.gitignore_global:/home/jovyan/.gitignore_global
-      - /Users/$USER/.aws:/home/jovyan/.aws
-      - /Users/$USER/.ssh:/home/jovyan/.ssh
-      - /Users/$USER/.gnupg:/home/jovyan/.gnupg
-      - /Users/$USER/.password-store:/home/jovyan/.password-store
-      - /Users/$USER/.matplotlib:/home/jovyan/.matplotlib
-      - /Users/$USER/.keras:/home/jovyan/.keras
-      - /Users/$USER/.kaggle:/home/jovyan/.kaggle
-      - /Users/$USER/.netrc:/home/jovyan/.netrc
-      - /Users/$USER/.db/sqlite3:/db/sqlite3
-      - /Users/$USER/.db/postgres:/db/postgres
+      - $HOME/projects:/home/jovyan/work
+      - $HOME/mt5:/mnt/efs/mt5
+      - $HOME/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/mnt/efs/mt5/updates
+      - $HOME/.jupyter:/home/jovyan/.jupyter
+      - $HOME/.cache:/home/jovyan/.cache
+      - $HOME/.streamlit:/home/jovyan/.streamlit
+      - $HOME/.ipython:/home/jovyan/.ipython
+      - $HOME/.gitconfig:/home/jovyan/.gitconfig
+      - $HOME/.gitignore_global:/home/jovyan/.gitignore_global
+      - $HOME/.aws:/home/jovyan/.aws
+      - $HOME/.ssh:/home/jovyan/.ssh
+      - $HOME/.gnupg:/home/jovyan/.gnupg
+      - $HOME/.password-store:/home/jovyan/.password-store
+      - $HOME/.matplotlib:/home/jovyan/.matplotlib
+      - $HOME/.keras:/home/jovyan/.keras
+      - $HOME/.kaggle:/home/jovyan/.kaggle
+      - $HOME/.netrc:/home/jovyan/.netrc
+      - $HOME/.db/sqlite3:/db/sqlite3
+      - $HOME/.db/postgres:/db/
     ports:
       - 8888:8888
+      - 8501:8501
     environment:
       - TZ="PDT"
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_GEONAI_API_KEY=${OPENAI_GEONAI_API_KEY}
+      - LLAMA_INDEX_CACHE_DIR=/home/jovyan/.cache/llama_index
       - LANGCHAIN_TRACING_V2=true
       - LANGCHAIN_ENDPOINT=https://api.langchain.plus
       - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY}
       - WHYLABS_DEFAULT_ORG_ID=${WHYLOG_ORG_ID}
+      - LAMINI_API_KEY=${LAMINI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - WHYLABS_API_KEY=${WHYLABS_API_KEY}
       - WHYLABS_DEFAULT_DATASET_ID=model-1
     restart: always
@@ -44,9 +51,9 @@ services:
       - CHATGPT_CONFIG_DATABASE=configuration
       - BUS_PORTLAND_CONFIG_DATABASE=bus-portland-configuration
     volumes:
-      - /Users/$USER/.db/postgres:/var/lib/postgresql/data
-    # ports:
-    #   - ${POSTGRES_PORT}:5432
+      - $HOME/.db/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
       interval: 60s

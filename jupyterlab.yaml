@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Part 1 - Build a JupyterLab stack with CloudFormation
+
+Resources:
+  JupyterLabInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-02f7fa3c92b47db0a #ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
+      InstanceType: t3.small
+      KeyName: aabor
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 32
+      SecurityGroupIds:
+        - !Ref JupyterLabSecurityGroup
+
+  JupyterLabSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Join ["-", [jupyterlab-security-group, dev]]
+      GroupDescription: "Allow JupyterLab, TrueLens UI and SSH inbound and outbound traffic"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8501
+          ToPort: 8501
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8888
+          ToPort: 8888
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  JupyterLabEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref JupyterLabInstance
+      Tags:
+        - Key: Name
+          Value: !Join ["-", [jupyterlab-eip, dev]]
+
+Outputs:
+  WebsiteURL:
+    Value: !Sub http://${JupyterLabEIP}
+    Description: JupyterLab URL

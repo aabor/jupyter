@@ -11,29 +11,42 @@ RUN  apt-get update && apt-get install -y \
   build-essential \
   && apt-get clean
 
+RUN apt-get update && apt-get  install -y sqlite3 libsqlite3-dev sqlite3-doc
+RUN mkdir -p /db/sqlite3 /db/postgres
+
+
 USER jovyan
 
 RUN python -m pip install --upgrade pip 
 RUN pip install python-dotenv lark tqdm rklib
-RUN pip install boto3[crt] tensorflow tensorflow_hub tensorflow-datasets kaggle
+
+RUN pip3 install torch sentence_transformers
+# RUN pip tensorflow tensorflow_hub tensorflow-datasets 
+
+RUN pip install boto3[crt] kaggle
 RUN pip install whylogs tensorboard wandb mosaicml mlflow
 RUN pip install PyWavelets
 RUN pip install mplfinance omegaconf humanfriendly dataclasses_json
 RUN pip install librosa pydub soundfile
 
 
-RUN pip install redlines evaluate langkit trulens-eval
 RUN pip install wikipedia wikipedia-api pypdf[crypto] yt-dlp
-RUN pip install span-marker docarray
-RUN pip install faiss-cpu
-RUN pip install openai langchain llama-index chromadb redis anthropic
+RUN pip install span-marker 
+RUN pip install docarray
+RUN pip install faiss-cpu chromadb redis
+RUN pip install openai
+RUN pip install streamlit
+RUN pip install redlines evaluate trulens-eval langkit
+RUN pip install langchain llama-index anthropic lamini google-generativeai
 RUN pip install psycopg2-binary
+# RUN pip install pydantic==1.10.14
 
 USER root
-RUN apt-get install -y sqlite3 libsqlite3-dev
-RUN mkdir -p /db/sqlite3 /db/postgres
 
 RUN mkdir -p /mnt/efs/mt5
 RUN chown -R jovyan:users /mnt/efs
 
 USER jovyan
+
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
+
