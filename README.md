@@ -72,22 +72,43 @@ aws cloudformation update-stack \
     --stack-name ec2-jupyterlab \
     --template-body file://jupyterlab.yaml
 
-mkdir -p ~/.jupyter ~/.cache ~/.streamlit ~/.ipython ~/.gnupg ~/.ssh ~/.password-store ~/.matplotlib ~/.kaggle ~/.netrc ~/.db/sqlite3 ~/.db/postgres
 
-
-rsync -auxv ~/data_lake ubuntu@52.38.23.157:~/
-rsync -auxv ~/.jupyter ubuntu@52.38.23.157:~/
-rsync -auxv ~/.cache ubuntu@52.38.23.157:~/
-rsync -auxv ~/.vector_store ubuntu@52.38.23.157:~/
-rsync -auxv ~/.db ubuntu@52.38.23.157:~/
-rsync -auxv ~/.ipython ubuntu@52.38.23.157:~/
-rsync -auxv ~/.gitconfig ubuntu@52.38.23.157:~/
-rsync -auxv ~/.gitignore_global ubuntu@52.38.23.157:~/
-rsync -auxv ~/.gnupg ubuntu@52.38.23.157:~/
-rsync -auxv ~/.password-store ubuntu@52.38.23.157:~/
-rsync -auxv ~/.matplotlib ubuntu@52.38.23.157:~/
+rsync -auxv ~/.ssh ubuntu@52.33.159.64:~/
+rsync -auxv ~/data_lake ubuntu@52.33.159.64:~/
+rsync -auxv ~/.jupyter ubuntu@52.33.159.64:~/
+rsync -auxv ~/.cache/huggingface ubuntu@52.33.159.64:~/.cache
+rsync -auxv ~/.cache/babl ubuntu@52.33.159.64:~/.cache
+rsync -auxv ~/.cache/llama_index ubuntu@52.33.159.64:~/.cache
+rsync -auxv ~/vector_store ubuntu@52.33.159.64:~/
+rsync -auxv ~/.db ubuntu@52.33.159.64:~/
+rsync -auxv ~/.ipython ubuntu@52.33.159.64:~/
+rsync -auxv ~/.gitconfig ubuntu@52.33.159.64:~/
+rsync -auxv ~/.gitignore_global ubuntu@52.33.159.64:~/
+rsync -auxv ~/.gnupg ubuntu@52.33.159.64:~/
+rsync -auxv ~/.password-store ubuntu@52.33.159.64:~/
+rsync -auxv ~/.matplotlib ubuntu@52.33.159.64:~/
 
 git clone git@bitbucket.org:aabor/cheatsheets.git
 git clone git@github.com:aabor/jupyter.git
+
+
+sudo apt update && sudo apt upgrade
+sudo apt install pass -y
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+sudo usermod -aG docker ${USER}
+sudo systemctl status docker
+
+docker run hello-world
+
+mkdir -p ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
+docker compose version
 ```
 
