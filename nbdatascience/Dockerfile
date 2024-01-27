@@ -46,6 +46,8 @@ USER root
 RUN mkdir -p /mnt/efs/mt5
 RUN chown -R jovyan:users /mnt/efs
 
+RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jovyan
+
 USER jovyan
 
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
