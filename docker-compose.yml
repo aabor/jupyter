@@ -5,27 +5,7 @@ services:
     image: aabor/nbdatascience:2.0
     build: nbdatascience/.
     volumes:
-      - $HOME/projects:/home/jovyan/work
-      - $HOME/data_lake:/home/jovyan/data_lake
-      - $HOME/mt5:/mnt/efs/mt5
-      - $HOME/Library/Application Support/MetaTrader 5/Bottles/metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Files/updates:/mnt/efs/mt5/updates
-      - $HOME/.jupyter:/home/jovyan/.jupyter
-      - $HOME/.cache:/home/jovyan/.cache
-      - $HOME/.vector_store:/home/jovyan/.vector_store
-      - $HOME/.db/sqlite3:/db/sqlite3
-      - $HOME/.db/postgres:/db/
-      - $HOME/.streamlit:/home/jovyan/.streamlit
-      - $HOME/.ipython:/home/jovyan/.ipython
-      - $HOME/.gitconfig:/home/jovyan/.gitconfig
-      - $HOME/.gitignore_global:/home/jovyan/.gitignore_global
-      - $HOME/.aws:/home/jovyan/.aws
-      - $HOME/.ssh:/home/jovyan/.ssh
-      - $HOME/.gnupg:/home/jovyan/.gnupg
-      - $HOME/.password-store:/home/jovyan/.password-store
-      - $HOME/.matplotlib:/home/jovyan/.matplotlib
-      - $HOME/.keras:/home/jovyan/.keras
-      - $HOME/.kaggle:/home/jovyan/.kaggle
-      - $HOME/.netrc:/home/jovyan/.netrc
+      - $HOME:/home/jovyan
     ports:
       - 8888:8888
       - 8501:8501
