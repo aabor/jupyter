@@ -31,8 +31,7 @@ services:
       - 8501:8501
     environment:
       - TZ="PDT"
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - OPENAI_GEONAI_API_KEY=${OPENAI_GEONAI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_GEONAI_API_KEY}
       - LLAMA_INDEX_CACHE_DIR=/home/jovyan/.cache/llama_index
       - LANGCHAIN_TRACING_V2=true
       - LANGCHAIN_ENDPOINT=https://api.langchain.plus

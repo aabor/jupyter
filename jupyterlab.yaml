@@ -5,17 +5,21 @@ Resources:
   JupyterLabInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
+      ImageId: ami-04ea3257d05419716 # ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
       InstanceType: t3.small
       KeyName: aabor
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
           Ebs:
+            DeleteOnTermination: true
             VolumeSize: 32
-        # - DeviceName: /dev/sda2
-        #   Ebs:
-        #     DeleteOnTermination: false
-        #     VolumeSize: 24
+            # SnapshotId: snap-0f0906dd14cabd708
+        - DeviceName: /dev/sda2
+          Ebs:
+            DeleteOnTermination: true
+            VolumeSize: 2
+            # SnapshotId: snap-013f1b17c96327327
+
       SecurityGroupIds:
         - !Ref JupyterLabSecurityGroup
 

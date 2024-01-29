@@ -52,3 +52,7 @@ USER jovyan
 
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 
+RUN pip install jupyter-resource-usage
+RUN pip install jupyterlab_execute_time
+
+
