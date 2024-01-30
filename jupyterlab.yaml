@@ -6,7 +6,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-04ea3257d05419716 # ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
-      InstanceType: t3.large
+      InstanceType: t3.large # 2 vCPU x86_64 8Gb
       KeyName: aabor
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
