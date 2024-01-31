@@ -5,8 +5,8 @@ Resources:
   JupyterLabInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0d8e4ebceea9bec58 # ami-0e537d0faf7bc0031 # us-west-2, 22.04 LTS, amd64
-      InstanceType: t3.large # 2vCPU x86_64 8Gb, t3.xlarge 4vCPU x86_64 16Gb
+      ImageId: ami-0c900e7df5035451d  # us-west-2, 22.04 LTS, amd64
+      InstanceType: t3.xlarge # 2vCPU x86_64 8Gb, t3.xlarge 4vCPU x86_64 16Gb
       KeyName: aabor
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
