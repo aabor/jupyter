@@ -22,6 +22,13 @@ services:
       - WHYLABS_API_KEY=${WHYLABS_API_KEY}
       - WHYLABS_DEFAULT_DATASET_ID=model-1
     restart: always
+  grobit:
+    image: grobid/grobid:0.8.0
+    restart: unless-stopped
+    volumes:
+      - $HOME/.grobit/config:/opt/grobid/grobid-home/config
+    ports:
+      - 8070:8070
   postgis:
     image: postgis/postgis
     build: postgis/.    

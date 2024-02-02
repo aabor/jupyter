@@ -73,20 +73,20 @@ aws cloudformation update-stack \
     --template-body file://jupyterlab.yaml
 
 
-rsync -auxv ~/.ssh ubuntu@52.33.159.64:~/
-rsync -auxv ~/data_lake ubuntu@52.33.159.64:~/
-rsync -auxv ~/.jupyter ubuntu@52.33.159.64:~/
-rsync -auxv ~/.cache/huggingface ubuntu@52.33.159.64:~/.cache
-rsync -auxv ~/.cache/babl ubuntu@52.33.159.64:~/.cache
-rsync -auxv ~/.cache/llama_index ubuntu@52.33.159.64:~/.cache
-rsync -auxv ~/vector_store ubuntu@52.33.159.64:~/
-rsync -auxv ~/.db ubuntu@52.33.159.64:~/
-rsync -auxv ~/.ipython ubuntu@52.33.159.64:~/
-rsync -auxv ~/.gitconfig ubuntu@52.33.159.64:~/
-rsync -auxv ~/.gitignore_global ubuntu@52.33.159.64:~/
-rsync -auxv ~/.gnupg ubuntu@52.33.159.64:~/
-rsync -auxv ~/.password-store ubuntu@52.33.159.64:~/
-rsync -auxv ~/.matplotlib ubuntu@52.33.159.64:~/
+rsync -auxv ~/.ssh ubuntu@44.226.121.254:~/
+rsync -auxv ~/data_lake ubuntu@44.226.121.254:~/
+rsync -auxv ~/.jupyter ubuntu@44.226.121.254:~/
+rsync -auxv ~/.cache/huggingface ubuntu@44.226.121.254:~/.cache
+rsync -auxv ~/.cache/babl ubuntu@44.226.121.254:~/.cache
+rsync -auxv ~/.cache/llama_index ubuntu@44.226.121.254:~/.cache
+rsync -auxv ~/vector_store ubuntu@44.226.121.254:~/
+rsync -auxv ~/.db ubuntu@44.226.121.254:~/
+rsync -auxv ~/.ipython ubuntu@44.226.121.254:~/
+rsync -auxv ~/.gitconfig ubuntu@44.226.121.254:~/
+rsync -auxv ~/.gitignore_global ubuntu@44.226.121.254:~/
+rsync -auxv ~/.gnupg ubuntu@44.226.121.254:~/
+rsync -auxv ~/.password-store ubuntu@44.226.121.254:~/
+rsync -auxv ~/.matplotlib ubuntu@44.226.121.254:~/
 
 git clone git@bitbucket.org:aabor/cheatsheets.git
 git clone git@github.com:aabor/jupyter.git

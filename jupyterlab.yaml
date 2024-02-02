@@ -5,7 +5,7 @@ Resources:
   JupyterLabInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0c900e7df5035451d  # us-west-2, 22.04 LTS, amd64
+      ImageId: ami-008fe2fc65df48dac  # ami-008fe2fc65df48dac us-west-2, 22.04 LTS, amd64
       InstanceType: t3.xlarge # 2vCPU x86_64 8Gb, t3.xlarge 4vCPU x86_64 16Gb
       KeyName: aabor
       BlockDeviceMappings:
@@ -36,6 +36,9 @@ Resources:
         - IpProtocol: tcp
           FromPort: 8888
           ToPort: 8888
+        - IpProtocol: tcp
+          FromPort: 8070
+          ToPort: 8070
           CidrIp: 0.0.0.0/0
         - IpProtocol: tcp
           FromPort: 22
