@@ -30,17 +30,6 @@ Resources:
       GroupDescription: "Allow JupyterLab, TrueLens UI and SSH inbound and outbound traffic"
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 8501
-          ToPort: 8501
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 8888
-          ToPort: 8888
-        - IpProtocol: tcp
-          FromPort: 8070
-          ToPort: 8070
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0

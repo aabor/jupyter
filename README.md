@@ -110,5 +110,17 @@ mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
 docker compose version
+
+# tunneling
+
+# JupyterLab
+ssh -NL 8889:localhost:8888 ubuntu@44.226.121.254
+
+# TruLens
+ssh -NL 8501:localhost:8501 ubuntu@44.226.121.254
+
+# Grobit
+ssh -NL 8070:localhost:8070 ubuntu@44.226.121.254
+
 ```
 
