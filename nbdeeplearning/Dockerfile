@@ -45,6 +45,8 @@ RUN pip install pause humanfriendly
 RUN pip install pytest ipytest  
 RUN pip install kaggle
 RUN pip install xlearn
+RUN langchain-google-genai pillow
+RUN OSMPythonTools
 
 USER root
 

@@ -124,3 +124,22 @@ ssh -NL 8070:localhost:8070 ubuntu@44.226.121.254
 
 ```
 
+## Ollama in docker container
+
+https://github.com/ollama/ollama?tab=readme-ov-file
+
+You should have at least 8 GB of RAM available to run the 7B models, 16 GB to run the 13B models, and 32 GB to run the 33B models.
+
+```sh
+docker pull ollama/ollama
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker exec -it ollama /bin/bash
+
+# download model and start cli
+ollama run llama2
+# ollama run codellama
+# ollama run llama2:70b
+
+curl -X POST http://localhost:11434/api/generate -d '{"model": "llama2", "prompt":"Tell a joke about LLMs."}'
+```
+
