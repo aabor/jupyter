@@ -1,7 +1,6 @@
 # aabor/nbdatascience
 # configured for automatic build
-FROM jupyter/datascience-notebook:lab-4.0.7
-
+FROM quay.io/jupyter/scipy-notebook:2024-12-23
 LABEL maintainer="A. Borochkin"
 
 USER root
