@@ -11,6 +11,7 @@ services:
       - 8501:8501
     environment:
       - TZ="PDT"
+      - HF_TOKEN=${HF_TOKEN}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - TOGETHER_API_KEY=${TOGETHER_API_KEY}
